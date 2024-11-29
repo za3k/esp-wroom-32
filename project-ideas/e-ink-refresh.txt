@@ -1,0 +1,4 @@
+Cost to do an e-ink refresh
+Cost to do a web call
+Cost to idle in the lowest-power state for 1 day
+Cost to exit idle state, then return
