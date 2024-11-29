@@ -28,32 +28,32 @@ To program, you do not need to press either one -- this should be handled for yo
 2. In a new directory, run `pio project init`
 3. Edit platformio.ini to include the following
 
-    [platformio]
-    default_envs = arduino
+        [platformio]
+        default_envs = arduino
 
-    [env:arduino]
-    framework = arduino
-    platform = espressif32
-    board = esp32dev
-    upload_port = /dev/ttyUSB0
+        [env:arduino]
+        framework = arduino
+        platform = espressif32
+        board = esp32dev
+        upload_port = /dev/ttyUSB0
 
 4. Add a file src/blink.cpp
 
-    #include <Arduino.h>
-
-    #define LED_BUILTIN 2
-
-    void setup()
-    {
-        pinMode(LED_BUILTIN, OUTPUT);
-    }
-    void loop()
-    {
-        digitalWrite(LED_BUILTIN, HIGH);
-        delay(1000);
-        digitalWrite(LED_BUILTIN, LOW);
-        delay(1000);
-    }
+        #include <Arduino.h>
+        
+        #define LED_BUILTIN 2
+        
+        void setup()
+        {
+            pinMode(LED_BUILTIN, OUTPUT);
+        }
+        void loop()
+        {
+            digitalWrite(LED_BUILTIN, HIGH);
+            delay(1000);
+            digitalWrite(LED_BUILTIN, LOW);
+            delay(1000);
+        }
 
 5. Run `pio run` to make sure the project builds.
 6. Run `pio run --target upload` to both build and upload the project.
@@ -62,34 +62,34 @@ To program, you do not need to press either one -- this should be handled for yo
 1. Install platformio-core
 2. In a new directory, run `pio project init`
 
-    [platformio]
-    default_envs = espidf
+            [platformio]
+            default_envs = espidf
 
-    [env:espidf]
-    framework = espidf
-    platform = espressif32
-    board = esp32dev
-    upload_port = /dev/ttyUSB0
+            [env:espidf]
+            framework = espidf
+            platform = espressif32
+            board = esp32dev
+            upload_port = /dev/ttyUSB0
 
 3. Add a file src/blink.c
 
-    #include "driver/gpio.h"
-    #include "freertos/FreeRTOS.h"
-    #include "freertos/task.h"
+            #include "driver/gpio.h"
+            #include "freertos/FreeRTOS.h"
+            #include "freertos/task.h"
 
-    #define BLINK_GPIO ((gpio_num_t)2)
+            #define BLINK_GPIO ((gpio_num_t)2)
 
-    void app_main(void) {
-        gpio_reset_pin(BLINK_GPIO);
-        /* Set the GPIO as a push/pull output */
-        gpio_set_direction(BLINK_GPIO, GPIO_MODE_OUTPUT);
-        while(1) {
-            gpio_set_level(BLINK_GPIO, 0);
-            vTaskDelay(1000 / portTICK_PERIOD_MS);
-            gpio_set_level(BLINK_GPIO, 1);
-            vTaskDelay(1000 / portTICK_PERIOD_MS);
-        }
-    }
+            void app_main(void) {
+                gpio_reset_pin(BLINK_GPIO);
+                /* Set the GPIO as a push/pull output */
+                gpio_set_direction(BLINK_GPIO, GPIO_MODE_OUTPUT);
+                while(1) {
+                    gpio_set_level(BLINK_GPIO, 0);
+                    vTaskDelay(1000 / portTICK_PERIOD_MS);
+                    gpio_set_level(BLINK_GPIO, 1);
+                    vTaskDelay(1000 / portTICK_PERIOD_MS);
+                }
+            }
 
 5. Run `pio run` to make sure the project builds. This might take a while the first time.
 6. Run `pio run --target upload` to both build and upload the project.
