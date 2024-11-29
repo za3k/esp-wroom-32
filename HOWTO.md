@@ -6,15 +6,25 @@ Make sure that /dev/ttyUSB0 shows up before continuing. If not, you may need to 
 
 ## PlatformIO and Arduino framework (VSCode IDE)
 1. Install VSCode on your system, and start it for the first time. When I tried in late 2024, only the binary version worked, not the open source version. (Picture of missing extension in OSS version)
+
 ![](images/vscode-search.png)
-2. Click the blocks icon on the left bar, or View > Extensions on the top menu, to open the Extensions section. Search for "PlatformIO IDE" and install the extension. ![](images/vscode-search2.png)
+
+2. Click the blocks icon on the left bar, or View > Extensions on the top menu, to open the Extensions section. Search for "PlatformIO IDE" and install the extension.
+   
+![](images/vscode-search2.png)
 
 3. After installing, make a new project. Select "ESP32 Dev Module" as your board. You can pick whatever name and location you want. For the example framework I'm going to use Arduino.
+
 ![](images/vscode-create.png)
+
 4. A new project has been created.
+
 ![](images/vscode-created.png)
+
 5. On the file browser on the left, open 'src' and navigate to 'main.cpp'. Replace the contents by the following code to make an LED blink.
+
 ![](images/vscode-code.png)
+
 6. Click the checkmark button at the top right, which says "Build" if you hover the mouse. This builds the project, ensuring that your code is correct.
 7. Clicking the dropdown right next to the checkmark, you should see these options: "Build", "Upload", "Test", and "Clean". Select "Upload". Your project will build again, and you should see the LED on your ESP32 start blinking.
 
